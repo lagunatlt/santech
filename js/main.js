@@ -38,16 +38,30 @@ $(function() {
 /*---------------------------
                               MENU TOGGLE
 ---------------------------*/
-$('.menu-button').on('click', function(event) {
+let navMenu = function(event) {
   event.preventDefault();
   $(this).toggleClass('active');
   $(this).siblings('header').toggleClass('active');
   if ($('header').hasClass('active')) {
-      $('body').css('overflow', 'hidden');
-    } else {
-      $('body').css('overflow', 'visible');
-    }
-});
+    $('body').css('overflow', 'hidden');
+  } else {
+    $('body').css('overflow', 'visible');
+  }
+}
+
+// $('.menu-button').on('click', function(event) {
+//   event.preventDefault();
+//   $(this).toggleClass('active');
+//   $(this).siblings('header').toggleClass('active');
+//   if ($('header').hasClass('active')) {
+//       $('body').css('overflow', 'hidden');
+//     } else {
+//       $('body').css('overflow', 'visible');
+//     }
+// });
+
+$('.menu-button').on('click', navMenu);
+// $('#online').on('click', navMenu);
 
 
   var $sections = $('section');
@@ -195,7 +209,7 @@ $('.menu-button').on('click', function(event) {
   });
 
 
-
+// --------------карточки----------------
 
 if ($(window).width() >= 1100) {
   var products = $(".four .prodBlock");
@@ -303,3 +317,130 @@ if ($(window).width() <= 600 && $(window).width() >= 501)  {
 
 
 });// end of file
+
+// ------------------------
+// let wrap = document.querySelector('.contact_wrap');
+let buttonSend = document.getElementById('online');
+let modalWrap = document.querySelector('.modal__wrap');
+let modal = document.querySelector('.modal');
+let modalHw = document.getElementById('modalHw');
+// let modalButtonEmail = document.getElementById('modalButtonEmail');
+let form = document.getElementById('form');
+let answer = document.getElementById('answer');
+
+// let hover = function () {
+//   document.addEventListener('click', function (el) {
+//     if (el.target.classList == "main__img") {
+//       wrap.classList.toggle('hover-contact');
+//     } else (wrap.classList.remove('hover-contact'))
+//   });
+// };
+
+// hover();
+
+let modalShow = function () {
+  modal.style.animation = 'modalOpacity 0.3s linear';
+  modal.style.display = 'flex';
+  modalWrap.style.animation = 'modalWrap 0.4s ease-out';
+  // buttonSend.classList.add('button-send__hide');
+  answer.style.display = 'none';
+  // navMenu();
+  $('.menu-button').trigger('click');
+};
+
+let modalClick = function () {
+  modal.addEventListener('click', function (el) {
+    if ((el.target.classList == "modal") || (el.target.classList == "modal__wrap-close")) {
+      modalHide();
+    };
+  });
+};
+
+modalClick();
+
+let modalHide = function () {
+  modal.style.animation = 'modalOpacity1 0.3s linear';
+  setTimeout(function () {
+    modal.style.display = 'none';
+    // buttonSend.classList.remove('button-send__hide');
+    // modalWrap.style.maxHeight = '300px';
+    form.style.display = 'flex';
+    // modalButtonEmail.style.display = 'flex';
+    modalHw.style.display = 'block';
+    answer.style.display = 'none';
+  }, 300);
+  modalWrap.style.animation = 'modalWrap1 0.4s ease-out';
+  $('body').css('overflow', 'visible');
+};
+
+// let hideElementModal = function () {
+//   // form.style.display = 'flex';
+//   // modalWrap.style.maxHeight = '640px';
+//   // modalButtonEmail.style.display = 'none';
+//   modalHw.style.display = 'none';
+// };
+
+buttonSend.addEventListener('click', modalShow);
+// buttonSend.addEventListener('click', navMenu);
+// wrap.addEventListener('click', modalShow);
+// modalButtonEmail.addEventListener('click', hideElementModal);
+
+// форма, отправка письма
+$(document).ready(function ($) {
+  $('#check').on('click', function () {
+    if ($("#check").prop("checked")) {
+      $('#button').attr('disabled', false);
+    } else {
+      $('#button').attr('disabled', true);
+    }
+  });
+
+  // Отправляет данные из формы на сервер и получает ответ
+  $('#form').on('submit', function (event) {
+
+    event.preventDefault();
+
+    var form = $('#form'),
+      button = $('#button'),
+      answer = $('#answer'),
+      loader = $('#loader');
+
+    $.ajax({
+      url: 'send.php',
+      type: 'POST',
+      data: form.serialize(),
+      beforeSend: function () {
+        answer.empty();
+        button.attr('disabled', true).css('margin-bottom', '20px');
+        loader.fadeIn();
+      },
+
+      success: function (result) {
+        setTimeout(function () {
+          form.hide();
+          // loader.fadeOut(300, function() {
+          loader.fadeOut();
+          answer.show();
+          answer.text('Сообщение успешно отправлено.');
+          // });
+        }, 600);
+        setTimeout(function () {
+          modalHide();  //см.функции выше
+          $('#form').trigger("reset");
+          $('#check').trigger("reset");
+          button.attr('disabled', true);
+        }, 1500);
+        console.log('ok');
+      },
+
+      error: function () {
+        loader.fadeOut(300, function () {
+          form.hide();
+          answer.show();
+          answer.text('Произошла ошибка! Попробуйте позже.');
+        });
+        button.attr('disabled', false);
+      }
+    });
+  });
+});
