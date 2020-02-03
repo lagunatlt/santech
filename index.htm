@@ -42,8 +42,8 @@
             padding: 0 !important;
         }
     </style> -->
-    <link rel='stylesheet' id='general-css-css' href='css/general.css?ver=4.6.3' type='text/css' media='all'>
-    <!-- <link rel='stylesheet' id='general-css-css' href='css/general-copy.css?ver=4.6.3' type='text/css' media='all'> -->
+    <link rel='stylesheet' href='css/general.css'>
+    <!-- <link rel='stylesheet' href='css/general-copy2.css'> -->
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:description" content="Услуги сантехника в СПБ и области.">
@@ -75,24 +75,24 @@
             <div class="form__wrap" id="formWrap">
                 <form action="send.php" class="form" id="form" method="post">
                     <div class="form-group">
-                        <label for="name">Ваше имя:</label>
+                        <label for="name">Ваше имя <span>*</span></label>
                         <input id="name" class="form-control" name="name" required="" type="text"
                             placeholder="Иванов Иван Иванович">
                     </div>
                     <div class="form-group">
-                        <label for="email">Ваш E-mail:</label>
-                        <input id="email" class="form-control" name="email" required="" type="email"
-                            placeholder="ivanov@email.com">
+                        <label for="phone">Ваш номер <span>*</span></label>
+                        <input id="phone" class="form-control tel" name="phone" required="" type="phone"
+                            placeholder="+7 (###)###-####">
                     </div>
                     <div class="form-group">
-                        <label>Текст сообщения:</label>
-                        <textarea name="message" class="form-control" id="message" cols="30" rows="8"></textarea>
+                        <label>Укажите район вызова</label>
+                        <textarea name="message" class="form-control" id="message" cols="30" rows="5"></textarea>
                     </div>
                     <div class="form-group__check">
                         <input id="check" class="form__check" type="checkbox">
                         <span class="form__check-desk">Я добровольно отправляю свои данные</span>
                     </div>
-                    <button class="form__button" type="submit" id="button" disabled>отправить</button>
+                    <button class="form__button" type="submit" id="button" disabled>отправить заявку</button>
                     <div class="result" id="loader" style="display:none">
                         <span class="loader">Отправка...</span>
                     </div>
@@ -133,23 +133,25 @@
 
         <nav>
             <!-- nav -->
-            <ul class="wrapper">
-                <li><a href="#setUp" class="active">
-                        установка сантехники
+            <div class="wrapper">
+                <ul>
+                    <li><a href="#setUp" class="active">
+                            установка сантехники
+                        </a></li>
+                    <li><a href="#setUpBg">
+                            ремонт/разводка труб
+                    <li><a href="#emergency">
+                            прочистка засоров
+                        </a></li>
+                    <li><a href="#reasons">
+                            НАШИ ПРЕИМУЩЕСТВА
+                        </a></li>
+                    <li><a href="#contacts">
+                            КОНТАКТЫ
+                        </a></li>
                     </a></li>
-                <li><a href="#setUpBg">
-                        ремонт/разводка труб
-                <li><a href="#emergency">
-                        прочистка засоров
-                    </a></li>
-                <li><a href="#reasons">
-                        НАШИ ПРЕИМУЩЕСТВА
-                    </a></li>
-                <li><a href="#contacts">
-                        КОНТАКТЫ
-                    </a></li>
-                </a></li>
-            </ul>
+                </ul>
+            </div>
         </nav><!-- nav -->
     </header><!-- end header -->
 
@@ -163,21 +165,58 @@
     <section class="offer" id="offer">
         <!-- offer -->
 
-        <div class="wrapper">
-            <div class="logo">
-                <img src="images/logo.png" alt="сантехник в спб" title="сантехник в спб">
-            </div>
-
-            <div class="offer-text">
-                <div class="offer-text__title">
-                    <p>Вызов сантехника<br> в СПБ и области </p>
+        <div class="wrapper offer-header">
+            <div class="offer-header__wrap">
+                <div class="logo">
+                    <img src="images/logo.png" alt="сантехник в спб" title="сантехник в спб">
                 </div>
-
-                <ul class="offer-text__list">
-                    <li>+ Опытные мастера (стаж от 5 лет)</li><br>
-                    <li>+ Любые районы</li><br>
-                    <li>+ Выезд на дом - бесплатный</li><br>
-                </ul>
+                <div class="offer-text">
+                    <div class="offer-text__title">
+                        <p>Вызов сантехника<br> в СПБ и области </p>
+                    </div>
+    
+                    <ul class="offer-text__list">
+                        <li>+ Опытные мастера (стаж от 5 лет)</li><br>
+                        <li>+ Любые районы</li><br>
+                        <li>+ Выезд на дом - бесплатный</li><br>
+                    </ul>
+                </div>
+            </div>
+            <div class="section-form">
+                <div class="section-form__wrap">
+                    <div class="section-form__title">Вызов сантехника</div>
+                    <div class="section-form__wrapper" id="formWrapper">
+                        <form action="send.php" class="form" id="sectionForm" method="post">
+                            <div class="form-group">
+                                <label for="name">Ваше имя <span>*</span></label>
+                                <input id="name" class="form-control" name="name" required="" type="text"
+                                    placeholder="Иванов Иван Иванович">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Ваш номер <span>*</span></label>
+                                <input id="phone" class="form-control tel" name="phone" required="" type="phone"
+                                    placeholder="+7 (###)###-####">
+                            </div>
+                            <div class="form-group">
+                                <label>Укажите район вызова</label>
+                                <textarea name="message" class="form-control" id="message" rows="4"></textarea>
+                            </div>
+                            <div class="form-group__check">
+                                <input id="sectionCheck" class="form__check" type="checkbox">
+                                <span class="form__check-desk">Я добровольно отправляю свои данные</span>
+                            </div>
+                            <button class="form__button" type="submit" id="sectionButton" disabled>отправить заявку</button>
+                            <div class="section-result" id="sectionLoader" style="display:none">
+                                <span class="loader">Отправка...</span>
+                            </div>
+                        </form>
+                        <div class="section-answer" id="sectionAnswer">
+                            <div class="sectionAnswerSpan"></div>
+                        </div>
+                    </div>
+                    <!-- <div class="modal__button" id="modalButtonEmail">или отправить сообщение на email</div> -->
+                    <!-- <div class="modal__wrap-close"></div> -->
+                </div>
             </div>
         </div>
 
@@ -296,24 +335,16 @@
                 </div>
 
 
-
-
                 <div class="prodBlock">
                     <div class="prodBlock__img">
                         <img src="images/r4.png" alt="">
                     </div>
                     <h3>Раковина</h3>
                     <ul>
-
-
                         <li>Установка раковины <br><strong>от 890 рублей</strong></li>
-
                         <li>Демонтаж раковины <strong>от 290 рублей</strong></li>
                     </ul>
                 </div>
-
-
-
 
 
                 <div class="prodBlock">
@@ -322,8 +353,6 @@
                     </div>
                     <h3>Полотенцесушитель</h3>
                     <ul>
-
-
                         <li>Монтаж полотенцесушителя <br><strong>от 990 рублей</strong></li>
                         <li>Перенос полотенцесушителя <br><strong>от 990 рублей.</strong></li>
                         <li>Демонтаж полотенцесушителя <br><strong>от 390 рублей</strong></li>
@@ -337,8 +366,6 @@
                     </div>
                     <h3>Радиаторы отопления</h3>
                     <ul>
-
-
                         <li>Установка батареи <strong>от 990 рублей</strong></li>
                         <li>Демонтаж батареи <strong>от 290 рублей</strong></li>
                     </ul>
@@ -350,12 +377,9 @@
                     </div>
                     <h3>Душевая кабина</h3>
                     <ul>
-
-
                         <li>Монтаж <strong>от 1790 рублей</strong></li>
                         <li>Монтаж (повышенная сложность) <br><strong>от 1990 рублей</strong></li>
                         <li>Демонтаж душевой кабины <strong>от 590 рублей</strong></li>
-
                     </ul>
                 </div>
 
@@ -365,11 +389,8 @@
                     </div>
                     <h3>Счетчик</h3>
                     <ul>
-
-
                         <li>Установка счетчика <strong>от 590 рублей</strong></li>
                         <li>Демонтаж счетчика <strong>от 190 рублей</strong></li>
-
                     </ul>
                 </div>
 
@@ -380,11 +401,8 @@
                     </div>
                     <h3>Редукторы давления</h3>
                     <ul>
-
-
                         <li>Установка <strong>от 590 рублей</strong></li>
                         <li>Демонтаж <strong>от 190 рублей</strong></li>
-
                     </ul>
                 </div>
 
@@ -395,10 +413,7 @@
                     </div>
                     <h3>Фильтр</h3>
                     <ul>
-
-
                         <li>Монтаж фильтра <strong>от 590 рублей</strong></li>
-
 
                     </ul>
                 </div>

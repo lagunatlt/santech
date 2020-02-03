@@ -314,8 +314,6 @@ if ($(window).width() <= 600 && $(window).width() >= 501)  {
     }, 800);
 }
 
-
-
 });// end of file
 
 // ------------------------
@@ -323,7 +321,7 @@ if ($(window).width() <= 600 && $(window).width() >= 501)  {
 let buttonSend = document.getElementById('online');
 let modalWrap = document.querySelector('.modal__wrap');
 let modal = document.querySelector('.modal');
-let modalHw = document.getElementById('modalHw');
+// let modalHw = document.getElementById('modalHw');
 // let modalButtonEmail = document.getElementById('modalButtonEmail');
 let form = document.getElementById('form');
 let answer = document.getElementById('answer');
@@ -366,7 +364,7 @@ let modalHide = function () {
     // modalWrap.style.maxHeight = '300px';
     form.style.display = 'flex';
     // modalButtonEmail.style.display = 'flex';
-    modalHw.style.display = 'block';
+    // modalHw.style.display = 'block';
     answer.style.display = 'none';
   }, 300);
   modalWrap.style.animation = 'modalWrap1 0.4s ease-out';
@@ -417,10 +415,10 @@ $(document).ready(function ($) {
 
       success: function (result) {
         setTimeout(function () {
-          form.hide();
+          // form.hide();
           // loader.fadeOut(300, function() {
           loader.fadeOut();
-          answer.show();
+          answer.css('display', 'flex');
           answer.text('Сообщение успешно отправлено.');
           // });
         }, 600);
@@ -434,13 +432,121 @@ $(document).ready(function ($) {
       },
 
       error: function () {
-        loader.fadeOut(300, function () {
-          form.hide();
-          answer.show();
+        loader.fadeOut(600, function () {
+          // sForm.hide();
+          answer.css('display', 'flex');
           answer.text('Произошла ошибка! Попробуйте позже.');
         });
-        button.attr('disabled', false);
+        setTimeout(function () {
+          answer.fadeOut(1700, function () {
+            answer.hide();
+          });
+        }, 2800);
       }
     });
   });
 });
+
+// -------------форма, отправка письма-------------section form
+$(document).ready(function ($) {
+  $('#sectionCheck').on('click', function () {
+    if ($('#sectionCheck').prop("checked")) {
+      $('#sectionButton').attr('disabled', false);
+    } else {
+      $('#sectionButton').attr('disabled', true);
+    }
+  });
+
+  // Отправляет данные из формы на сервер и получает ответ
+  $('#sectionForm').on('submit', function (event) {
+
+    event.preventDefault();
+
+    var sForm = $('#sectionForm'),
+      sButton = $('#sectionButton'),
+      sAnswer = $('#sectionAnswer'),
+      sLoader = $('#sectionLoader');
+
+    $.ajax({
+      url: 'send.php',
+      type: 'POST',
+      data: sForm.serialize(),
+      beforeSend: function () {
+        sAnswer.empty();
+        sButton.attr('disabled', true).css('margin-bottom', '20px');
+        sLoader.fadeIn();
+      },
+
+      success: function (result) {
+        setTimeout(function () {
+          // sForm.hide();
+          // loader.fadeOut(300, function() {
+          sLoader.fadeOut();
+          sAnswer.css('display', 'flex');
+          sAnswer.text('Сообщение успешно отправлено.');
+          // });
+        }, 600);
+        setTimeout(function () {
+          // modalHide();  //см.функции выше
+          $('#sectionForm').trigger("reset");
+          $('#sectionCheck').trigger("reset");
+          sButton.attr('disabled', true);
+          // sForm.show();
+        }, 1500);
+        console.log('ok');
+      },
+
+      error: function () {
+        sLoader.fadeOut(600, function () {
+          // sForm.hide();
+          sAnswer.css('display','flex');
+          sAnswer.text('Произошла ошибка! Попробуйте позже.');
+        });
+        setTimeout(function () {
+          sAnswer.fadeOut(1700, function () {
+            sAnswer.hide();
+          });
+        }, 2800);
+        sButton.attr('disabled', false);
+      }
+    });
+  });
+});
+// -------------------------------mask-----------------
+window.addEventListener("DOMContentLoaded", function () {
+  [].forEach.call(document.querySelectorAll('.tel'), function (input) {
+    var keyCode;
+    function mask(event) {
+      event.keyCode && (keyCode = event.keyCode);
+      var pos = this.selectionStart;
+      if (pos < 3) event.preventDefault();
+      var matrix = "+7 (___)-___-____",
+        i = 0,
+        def = matrix.replace(/\D/g, ""),
+        val = this.value.replace(/\D/g, ""),
+        new_value = matrix.replace(/[_\d]/g, function (a) {
+          return i < val.length ? val.charAt(i++) || def.charAt(i) : a
+        });
+      i = new_value.indexOf("_");
+      if (i != -1) {
+        i < 5 && (i = 3);
+        new_value = new_value.slice(0, i)
+      }
+      var reg = matrix.substr(0, this.value.length).replace(/_+/g,
+        function (a) {
+          return "\\d{1," + a.length + "}"
+        }).replace(/[+()]/g, "\\$&");
+      reg = new RegExp("^" + reg + "$");
+      if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) this.value = new_value;
+      if (event.type == "blur" && this.value.length < 5) this.value = ""
+    }
+
+    input.addEventListener("input", mask, false);
+    input.addEventListener("focus", mask, false);
+    input.addEventListener("blur", mask, false);
+    input.addEventListener("keydown", mask, false)
+
+  });
+
+});
+// -------------------------------mask end-----------------
