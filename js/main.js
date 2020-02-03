@@ -495,6 +495,7 @@ $(document).ready(function ($) {
         }, 1500);
         console.log('ok');
       },
+      
 
       error: function () {
         sLoader.fadeOut(600, function () {

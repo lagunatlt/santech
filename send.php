@@ -10,6 +10,7 @@ $message = $_POST['message'];
 // Настройки
 $mail = new PHPMailer;
 
+
 $mail->isSMTP(); 
 $mail->Host = 'smtp.yandex.ru';  
 $mail->SMTPAuth = true;                      
