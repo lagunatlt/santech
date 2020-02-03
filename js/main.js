@@ -325,7 +325,9 @@ let modal = document.querySelector('.modal');
 // let modalButtonEmail = document.getElementById('modalButtonEmail');
 let form = document.getElementById('form');
 let answer = document.getElementById('answer');
-
+let contentButton = document.getElementById('contentButton');
+let contentButton1 = document.getElementById('contentButton1');
+let contentButton2 = document.getElementById('contentButton2');
 // let hover = function () {
 //   document.addEventListener('click', function (el) {
 //     if (el.target.classList == "main__img") {
@@ -379,6 +381,9 @@ let modalHide = function () {
 // };
 
 buttonSend.addEventListener('click', modalShow);
+contentButton.addEventListener('click', modalShow);
+contentButton1.addEventListener('click', modalShow);
+contentButton2.addEventListener('click', modalShow);
 // buttonSend.addEventListener('click', navMenu);
 // wrap.addEventListener('click', modalShow);
 // modalButtonEmail.addEventListener('click', hideElementModal);

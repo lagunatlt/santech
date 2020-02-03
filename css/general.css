@@ -1836,6 +1836,9 @@ header.hasScrolled {
   header.hasScrolled {
     overflow: hidden;
   }
+  .wrapper.offer-header {
+    padding: 14px 12px;
+  }
 }
 
 /*-------- end header ---------*/
@@ -3257,6 +3260,13 @@ hr {
     position: static;
     height: 300px;
   }
+  header .header__info .contactUs {
+    margin: 25px auto;
+  }
+
+.header__info>div:nth-child(1)>h1:nth-child(2)>a:nth-child(3) {
+  color: #208ea5;
+  }
 }
 
 .footer {
@@ -3618,7 +3628,7 @@ hr {
   display: inline-block;
   vertical-align: middle;
   text-align: left;
-  width: 95%;
+  /* width: 95%; */
 }
 
 .offer .offer-text__title {
@@ -3752,6 +3762,7 @@ hr {
   .offer .offer-text__title p {
     text-align: right;
   } */
+  
 
   .offer .offer-text__list li {
     font-size: 14px;
