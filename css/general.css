@@ -1500,6 +1500,9 @@ header {
   /*-------- nav ---------*/
   /*-------- end nav ---------*/
 }
+.wrapper.offer-header {
+  padding: 30px 20px;
+}
 
 @media (max-width: 1000px) {
   header {
@@ -1516,18 +1519,32 @@ header {
     padding: 20px 0;
     z-index: 100;
     background-color: #231F20;
+    padding: 0;
   }
 
   header.active {
     left: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100%;
   }
 
   header:after {
     display: none;
   }
+  #online {
+    width: 80%;
+    height: 56px;
+    font-size: 18px;
+  }
+  header.active>nav:nth-child(2)>div:nth-child(1) {
+    height: 100%;
+    min-height: 210px;
+  }
 }
 
-@media (max-width: 1000px) and (min-height: 600px) {
+/* @media (max-width: 1000px) and (min-height: 600px) {
   header {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1549,7 +1566,7 @@ header {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
-}
+} */
 
 header .header__info {
   height: 100%;
@@ -1585,11 +1602,11 @@ header .header__info .logo {
   color: #444;
 }
 
-header .header__info .logo:before {
+/* header .header__info .logo:before {
   content: "";
   display: inline-block;
   vertical-align: middle;
-}
+} */
 
 header .header__info .logo em {
   font: 12px/18px "museo_sans_cyrl300";
@@ -1789,12 +1806,16 @@ header nav ul a.active {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+    justify-content: space-around;
     width: 100% !important;
     height: 100%;
   }
 
   header nav li:before {
     display: none;
+  }
+   header nav li {
+    margin-bottom: 10px;
   }
 
   header nav li a {
@@ -1957,6 +1978,17 @@ header.hasScrolled {
   background-size: cover;
   padding: 0;
   position: relative;
+}
+.offer::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #2c323e;
+  opacity: 0.2;
 }
 .offer-header {
   display: flex;
@@ -2150,7 +2182,7 @@ form input {
   -webkit-border-radius: 10px;
   border-radius: 10px;
   background-color: #EFEFEF;
-  font: 12px 'Verdana';
+  font: 17px 'Verdana';
   padding-left: 20px;
   -webkit-transition: all 0.1s;
   -ms-transition: all 0.1s;
@@ -3593,17 +3625,16 @@ hr {
 
 
 
-.wrapper.offer-header {
-  padding: 30px 20px;
-}
+
 
 .section-form__wrap {
   position: relative;
-  border: 6px solid #332D2E;
-  box-sizing: content-box;
-  border-radius: 10px;
-  box-shadow: 0px 2px 30px #373737;
   width: 370px;
+  border: 6px solid #332D2E;
+  border-radius: 10px;
+  box-sizing: content-box;
+  box-shadow: 0px 2px 30px #1a1a1a;
+  opacity: 1;
 }
 
 .section-form__title {
@@ -3632,13 +3663,14 @@ hr {
 }
 
 .offer .offer-text__title {
+  position: relative;
+  width: auto;
+  padding: 15px;
   font-size: 38px;
   color: #FFF;
   text-shadow: 0 0 7px #000;
-  padding: 15px;
   /*background-color: rgba(0, 0, 0, .6);*/
   font-family: "intro_boldregular";
-  width: auto;
   display: inline-block;
 }
 
@@ -3812,8 +3844,8 @@ hr {
   width: 100%;
   height: 100%;
   max-width: 420px;
-  max-height: 560px;
-  margin-top: 10px;
+  max-height: 480px;
+  margin-top: 25px;
   /* padding: 40px 20px; */
   background: #fff;
   box-shadow: 2px 2px 20px #171717;
@@ -3917,7 +3949,7 @@ hr {
 .form__button:disabled,
 .form__button[disabled] {
   color: #fff;
-  background-color: #a72828b7;
+  background-color: #208ea5;
   cursor: not-allowed;
 }
 
@@ -3932,9 +3964,11 @@ hr {
 
 label {
   padding-bottom: 5px;
-  font-size: 16px;
+  font-size: 15px;
   font-family: sans-serif;
-  color: #5b5b5b;
+  color: #208ea5;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 input {
@@ -3946,7 +3980,7 @@ textarea {
   padding: 15px;
   font-size: 18px;
   font-family: sans-serif;
-  color: #606060;
+  color: #242424;
   border-radius: 5px;
   border: 1px solid #ced4da;
 }

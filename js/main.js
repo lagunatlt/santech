@@ -393,7 +393,16 @@ contentButton2.addEventListener('click', modalShow);
 // wrap.addEventListener('click', modalShow);
 // modalButtonEmail.addEventListener('click', hideElementModal);
 
+
 // форма, отправка письма
+// --------сброс инпутов
+$('#sectionForm').trigger("reset");
+$('#sectionCheck').trigger("reset");
+$('#form').trigger("reset");
+$('#check').trigger("reset");
+$('#sectionButton').attr('disabled', true);
+$('#button').attr('disabled', true);
+// -----------
 $(document).ready(function ($) {
   $('#check').on('click', function () {
     if ($("#check").prop("checked")) {
