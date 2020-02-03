@@ -98,53 +98,58 @@ $('.menu-button').on('click', navMenu);
 
 
 /*---------------------------------------------------*/
-  $('.magnific').magnificPopup({
-    type: 'inline',
+  // $('.magnific').magnificPopup({
+  //   type: 'inline',
 
-    fixedContentPos: false,
-    fixedBgPos: true,
+  //   fixedContentPos: false,
+  //   fixedBgPos: true,
 
-    overflowY: 'auto',
-    modal: false,
+  //   overflowY: 'auto',
+  //   modal: false,
 
-    closeBtnInside: true,
-    preloader: false,
+  //   closeBtnInside: true,
+  //   preloader: false,
     
-    midClick: true,
-    removalDelay: 300,
-    mainClass: 'my-mfp-slide-bottom'
-  });
+  //   midClick: true,
+  //   removalDelay: 300,
+  //   mainClass: 'my-mfp-slide-bottom'
+  // });
 
-  $('.magnific-video').magnificPopup({
-    type: 'iframe',
+  // $('.magnific-video').magnificPopup({
+  //   type: 'iframe',
 
-    fixedContentPos: false,
-    fixedBgPos: true,
+  //   fixedContentPos: false,
+  //   fixedBgPos: true,
 
-    overflowY: 'auto',
-    modal: false,
+  //   overflowY: 'auto',
+  //   modal: false,
 
-    closeBtnInside: true,
-    preloader: false,
+  //   closeBtnInside: true,
+  //   preloader: false,
     
-    midClick: true,
-    removalDelay: 300,
-    mainClass: 'my-mfp-slide-bottom',
+  //   midClick: true,
+  //   removalDelay: 300,
+  //   mainClass: 'my-mfp-slide-bottom',
 
-    iframe: {
-      patterns: {
-        youtube: {
-          src: 'http://www.youtube.com/embed/%id%?autoplay=1' // URL that will be set as a source for iframe.
-        }
-      }
-    }
+  //   iframe: {
+  //     patterns: {
+  //       youtube: {
+  //         src: 'http://www.youtube.com/embed/%id%?autoplay=1' // URL that will be set as a source for iframe.
+  //       }
+  //     }
+  //   }
     
-  });
+  // });
 
-  $(document).on('click', '.popup-modal-dismiss', function (e) {
-    e.preventDefault();
-    $.magnificPopup.close();
-  });
+  // $(document).on('click', '.popup-modal-dismiss', function (e) {
+  //   e.preventDefault();
+  //   $.magnificPopup.close();
+  // });
+
+
+// ---------------------------
+
+
 
   $('.trust__slider').slick({
     dots: false,
@@ -248,71 +253,71 @@ if ($(window).width() <= 600 && $(window).width() >= 501)  {
   /*---------------------------
                                 GOOGLE MAP
   ---------------------------*/
-  var map;
-  function googleMap_initialize() {
-    var lat = $('#map_canvas').data('lat');
-    var long = $('#map_canvas').data('lng');
-    var img = $('#map_canvas').data('marker');
-    var mapCenterCoord = new google.maps.LatLng(lat, long+0.003);
-    var mapMarkerCoord = new google.maps.LatLng(lat, long);
-    if ( $(window).width() < 1001 ) {
-      mapCenterCoord = new google.maps.LatLng(lat, long);
-      mapMarkerCoord = new google.maps.LatLng(lat, long);
-    }
-    $(window).resize(function(event) {
-      if ( $(window).width() < 1001 ) {
-        mapCenterCoord = new google.maps.LatLng(lat, long);
-        mapMarkerCoord = new google.maps.LatLng(lat, long);
-      } else {
-        mapCenterCoord = new google.maps.LatLng(lat, long+0.003);
-        mapMarkerCoord = new google.maps.LatLng(lat, long);
-      }
-    });
+  // var map;
+  // function googleMap_initialize() {
+  //   var lat = $('#map_canvas').data('lat');
+  //   var long = $('#map_canvas').data('lng');
+  //   var img = $('#map_canvas').data('marker');
+  //   var mapCenterCoord = new google.maps.LatLng(lat, long+0.003);
+  //   var mapMarkerCoord = new google.maps.LatLng(lat, long);
+  //   if ( $(window).width() < 1001 ) {
+  //     mapCenterCoord = new google.maps.LatLng(lat, long);
+  //     mapMarkerCoord = new google.maps.LatLng(lat, long);
+  //   }
+  //   $(window).resize(function(event) {
+  //     if ( $(window).width() < 1001 ) {
+  //       mapCenterCoord = new google.maps.LatLng(lat, long);
+  //       mapMarkerCoord = new google.maps.LatLng(lat, long);
+  //     } else {
+  //       mapCenterCoord = new google.maps.LatLng(lat, long+0.003);
+  //       mapMarkerCoord = new google.maps.LatLng(lat, long);
+  //     }
+  //   });
 
-    var mapOptions = {
-      center: mapCenterCoord,
-      zoom: 16,
-      //draggable: false,
-      disableDefaultUI: true,
-      scrollwheel: false,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+  //   var mapOptions = {
+  //     center: mapCenterCoord,
+  //     zoom: 16,
+  //     //draggable: false,
+  //     disableDefaultUI: true,
+  //     scrollwheel: false,
+  //     mapTypeId: google.maps.MapTypeId.ROADMAP
+  //   };
 
-    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-    var markerImage = new google.maps.MarkerImage(img);
-    var marker = new google.maps.Marker({
-      icon: markerImage,
-      position: mapMarkerCoord, 
-      map: map,
-      title:"Домашний Сантехник"
-    });
+  //   map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+  //   var markerImage = new google.maps.MarkerImage(img);
+  //   var marker = new google.maps.Marker({
+  //     icon: markerImage,
+  //     position: mapMarkerCoord, 
+  //     map: map,
+  //     title:"Домашний Сантехник"
+  //   });
     
-    $(window).resize(function (){
-      map.setCenter(mapCenterCoord);
-    });
+  //   $(window).resize(function (){
+  //     map.setCenter(mapCenterCoord);
+  //   });
 
-    $('.zoom-in').on('click', function(event) {
-      event.preventDefault();
-      var zoom = map.getZoom();
-      map.setZoom(zoom+1);
-    });
-    $('.zoom-out').on('click', function(event) {
-      event.preventDefault();
-      var zoom = map.getZoom();
-      map.setZoom(zoom-1);
-    });
+  //   $('.zoom-in').on('click', function(event) {
+  //     event.preventDefault();
+  //     var zoom = map.getZoom();
+  //     map.setZoom(zoom+1);
+  //   });
+  //   $('.zoom-out').on('click', function(event) {
+  //     event.preventDefault();
+  //     var zoom = map.getZoom();
+  //     map.setZoom(zoom-1);
+  //   });
 
-  }
-  if ( $('#map_canvas').length > 0) {
-    googleMap_initialize();   
-  }
+  // }
+  // if ( $('#map_canvas').length > 0) {
+  //   googleMap_initialize();   
+  // }
 
 
-  if(window.location.hash) {
-    $('html, body').animate({
-        scrollTop:$(window.location.hash).offset().top - 120
-    }, 800);
-}
+  // if(window.location.hash) {
+  //   $('html, body').animate({
+  //       scrollTop:$(window.location.hash).offset().top - 120
+  //   }, 800);
+  // }
 
 });// end of file
 
