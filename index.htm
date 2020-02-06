@@ -28,22 +28,7 @@
     <meta property="og:description"
         content="Услуги сантехника в СПБ и области. Вызов мастера на дом в любой район города">
 
-    <!-- <style type="text/css">
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 .07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style> -->
     <link rel='stylesheet' href='css/general.css'>
-    <!-- <link rel='stylesheet' href='css/general-copy2.css'> -->
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:description" content="Услуги сантехника в СПБ и области.">
@@ -55,15 +40,6 @@
     <link rel="icon" href="images/favicon-300x300.png" sizes="192x192">
     <link rel="apple-touch-icon-precomposed" href="images/favicon-300x300.png">
     <meta name="msapplication-TileImage" content="/images/favicon-300x300.png">
-    <!-- <script src="https://form.jotformeu.com/static/feedback2.js?3.3.REV" type="text/javascript"> var JFL_70342996595369 = new JotformFeedback({ formId: '70342996595369', base: 'https://form.jotformeu.com/', windowTitle: 'Вызов сантехника', background: '#FFA500', fontColor: '#FFFFFF', type: 'false', height: 420, width: 370, openOnLoad: false });
-    </script> -->
-
-    <!-- <script
-        type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function () { try { w.yaCounter42644609 = new Ya.Metrika({ id: 42644609, clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true }); } catch (e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");
-    </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/42644609" style="position:absolute; left:-9999px;" alt=""></div>
-    </noscript>  -->
 
 </head>
 
@@ -74,42 +50,25 @@
             <div class="form__title">Вызов сантехника</div>
             <div class="form__wrap" id="formWrap">
                 <form action="send.php" class="form" id="form" method="post">
-                    <div class="form-group">
-                        <label for="name">Ваше имя <span>*</span></label>
-                        <input id="name" class="form-control" name="name" required="" type="text"
-                            placeholder="Иванов Иван Иванович">
-                    </div>
+                        <input id="nameModal" class="form-control" name="name" type="text">
+                        <input id="emailModal" class="form-control" name="email" type="email">
                     <div class="form-group">
                         <label for="phone">Ваш номер <span>*</span></label>
-                        <input id="phone" class="form-control tel" name="phone" required="" type="phone"
-                            placeholder="+7 (###)###-####">
+                        <input id="phone" class="form-control tel" name="phone" required="" type="text"
+                            placeholder="+7 (###) ###-##-##">
                     </div>
-                    <div class="form-group">
-                        <label>Укажите район вызова</label>
-                        <textarea name="message" class="form-control" id="message"  rows="2"></textarea>
-                    </div>
-                    <div class="form-group__check">
-                        <input id="check" class="form__check" type="checkbox">
-                        <span class="form__check-desk">Я добровольно отправляю свои данные</span>
-                    </div>
-                    <button class="form__button" type="submit" id="button" disabled>отправить заявку</button>
+                    <button class="form__button" type="submit" id="button">отправить заявку</button>
                     <div class="result" id="loader" style="display:none">
                         <span class="loader">Отправка...</span>
                     </div>
                 </form>
                 <div class="answer" id="answer"></div>
             </div>
-            <!-- <div class="modal__button" id="modalButtonEmail">или отправить сообщение на email</div> -->
             <div class="modal__wrap-close"></div>
         </div>
     </div>
 <!-- -----------------modal end----------------- -->
-
-    <!--  <a class="btn lightbox-70342996595369" style="margin-top: 16px"> santech-uslugi.ru </a>   -->
-
-    
     <header>
-
         <!-- header -->
         <div class="header__info">
             <div class="wrapper">
@@ -128,7 +87,6 @@
                 </button>
 
             </div>
-
         </div>
 
         <nav>
@@ -161,14 +119,13 @@
         <span class="menu-line bottom_line"></span>
     </button>
 
-
     <section class="offer" id="offer">
         <!-- offer -->
 
         <div class="wrapper offer-header">
             <div class="offer-header__wrap">
                 <div class="logo">
-                    <img src="images/logo.png" alt="сантехник в спб" title="сантехник в спб">
+                    <img src="images/logo-2.svg" alt="сантехник в спб" title="сантехник в спб">
                 </div>
                 <div class="offer-text">
                     <div class="offer-text__title">
@@ -187,25 +144,14 @@
                     <div class="section-form__title">Вызов сантехника</div>
                     <div class="section-form__wrapper" id="formWrapper">
                         <form action="send.php" class="form" id="sectionForm" method="post">
-                            <div class="form-group">
-                                <label for="name">Ваше имя <span>*</span></label>
-                                <input id="name" class="form-control" name="name" required="" type="text"
-                                    placeholder="Иванов Иван Иванович">
-                            </div>
+                                <input id="name" name="name" type="text">
+                                <input id="email" name="email" type="email">
                             <div class="form-group">
                                 <label for="phone">Ваш номер <span>*</span></label>
-                                <input id="phone" class="form-control tel" name="phone" required="" type="phone"
-                                    placeholder="+7 (###)###-####">
+                                <input id="phone" class="form-control tel" name="phone" required="" type="text"
+                                    placeholder="+7 (###) ###-##-##">
                             </div>
-                            <div class="form-group">
-                                <label>Укажите район вызова</label>
-                                <textarea name="message" class="form-control" id="message" rows="2"></textarea>
-                            </div>
-                            <div class="form-group__check">
-                                <input id="sectionCheck" class="form__check" type="checkbox">
-                                <span class="form__check-desk">Я добровольно отправляю свои данные</span>
-                            </div>
-                            <button class="form__button" type="submit" id="sectionButton" disabled>отправить заявку</button>
+                            <button class="form__button" type="submit" id="sectionButton" >отправить заявку</button>
                             <div class="section-result" id="sectionLoader" style="display:none">
                                 <span class="loader">Отправка...</span> 
                             </div>
@@ -214,8 +160,6 @@
                             <div class="sectionAnswerSpan"></div>
                         </div>
                     </div>
-                    <!-- <div class="modal__button" id="modalButtonEmail">или отправить сообщение на email</div> -->
-                    <!-- <div class="modal__wrap-close"></div> -->
                 </div>
             </div>
         </div>

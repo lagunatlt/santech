@@ -2,69 +2,50 @@
 // Файлы phpmailer
 require 'class.phpmailer.php';
 require 'class.smtp.php';
+// ----------
+$badIP = [];
+$ipAddr = $_SERVER['REMOTE_ADDR'];
+$today    = date('d-m-Y_H-i');
+$name = $_POST['phone'];
+//spam ловушка
+$spam = $_POST['email'];
+$spam1 = $_POST['name'];
 
-$name = $_POST['name'];
-$email = $_POST['email'];
-$message = $_POST['message'];
-// $file = $_FILES['userfile'];
 // Настройки
 $mail = new PHPMailer;
-
-
 $mail->isSMTP(); 
 $mail->Host = 'smtp.yandex.ru';  
 $mail->SMTPAuth = true;                      
 $mail->Username = 'lagunatlt'; // Ваш логин в Яндексе. Именно логин, без @yandex.ru
-$mail->Password = 'kmupouwprerlbecl'; // Ваш пароль
+$mail->Password = 'oqbzlegjtyecvpnl'; // Ваш пароль
 $mail->SMTPSecure = 'ssl';                            
 $mail->Port = 465;
 $mail->setFrom('lagunatlt@yandex.ru', 'bodyPage'); // Ваш Email, Имя
 $mail->addAddress('lagunatlt@yandex.ru'); // Email получателя
 $mail->addAddress('lagunatlt@yandex.ru'); // Еще один email, если нужно.
 
-// Прикрепление файлов
-//   for ($ct = 0; $ct < count($_FILES['userfile']['tmp_name']); $ct++) {
-    //         $uploadfile = tempnam(sys_get_temp_dir(), sha1($_FILES['userfile']['name'][$ct]));
-    //         $filename = $_FILES['userfile']['name'][$ct];
-    //         if (move_uploaded_file($_FILES['userfile']['tmp_name'][$ct], $uploadfile)) {
-        //             $mail->addAttachment($uploadfile, $filename);
-        //         } else {
-            //             $msg .= 'Failed to move file to ' . $uploadfile;
-            //         }
-            //     }   
-            
-            // Письмо
-            $mail->isHTML(true); 
-            $mail->Subject = "Новое сообщение с bodypage.ru"; // Заголовок письма
-            // require 'email.php'; // подключаем шаблон письма
-            // ob_start(); // включаем буферизацию
-            // $mail->Body = ob_get_clean(); // Текст письма
-            
-            // $subject = ob_get_clean(); // выгружаем письмо из буфера
-            
-            
-            $mail->Body =       
-                                "<p><i>Сообщение от <b>$name</b>,&nbsp;[$email]</i></p>
-                                <hr/>
-                                <p>$message</p>"; // Текст письма
+if(!in_array($ipAddr, $badIP) && empty($spam) && empty($spam1)) { // если не заполнено скрытое поле и если IP-адрес не находится в нашем чёрном списке
 
-            // $mail->Body    = '<table style="width: 695px;">
-            //                 <tbody>
-            //                 <tr>
-            //                 <td style="width: 685px;">
-            //                 <h1 style="text-align: center;"><strong>Добрый день!</strong></h1>
-            //                 <p style="text-align: center;"><span style="color: #339966;"><strong>поступила новая заявка с вашего сайта</strong></span></p>
-            //                 </td>
-            //                 </tr>
-            //                 </tbody>
-            //                 </table>
-            //                 <p>&nbsp;</p>'; // Текст письма
-            // $mail->addAttachment($uploadfile, $filename);
-            // Результат
-            if(!$mail->send()) {
-                echo 'Message could not be sent.';
-                echo 'Mailer Error: ' . $mail->ErrorInfo;
-            } else {
-                echo 'ok';
-            }
-            ?>
+		file_put_contents("send-mail.log", "\n{$today}\nIP:{$ipAddr}\nОт:{$name}\n", FILE_APPEND); chmod("send-mail.log", 0600);
+
+		// если всё ок - отправляем письмо
+		
+            $mail->isHTML(true); 
+            $mail->Subject = "Новая заявка"; // Заголовок письма
+            $mail->Body =  "<p>Необходим выезд сантехника</p>
+                            <hr/>
+                            <p>к/т <b>$name</b></p>"; // Текст письма
+}
+else { // если роботом было заполнено скрытое поле или если IP-адрес в чёрном списке
+    file_put_contents("spam.log", "\n{$today}\nСпам бот\nIP:{$ipAddr}\n", FILE_APPEND); chmod("spam.log", 0600);
+	exit(); // сразу выходим
+}
+// Результат
+if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'ok';
+}
+?>
+   
