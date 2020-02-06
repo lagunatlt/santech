@@ -456,7 +456,10 @@ $(document).ready(function ($) {
         }, 600);
         setTimeout(function () {
           $('#sectionForm').trigger("reset");
+<<<<<<< HEAD
           sAnswer.hide();
+=======
+>>>>>>> 2164c0797e3f736d87e300e06b46972c45eca30c
         }, 1500);
         console.log('ok');
       },

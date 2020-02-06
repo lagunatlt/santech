@@ -1913,7 +1913,11 @@ header.hasScrolled {
   bottom: auto;
   margin: auto;
   cursor: pointer;
+<<<<<<< HEAD
   z-index: 2;
+=======
+  z-index: 20;
+>>>>>>> 2164c0797e3f736d87e300e06b46972c45eca30c
   background-color: #5d6a77;
   border: 1px solid #ffffff80;
   -webkit-border-radius: 4px;
