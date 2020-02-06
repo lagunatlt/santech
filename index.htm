@@ -74,25 +74,22 @@
             <div class="form__title">Вызов сантехника</div>
             <div class="form__wrap" id="formWrap">
                 <form action="send.php" class="form" id="form" method="post">
-                    <div class="form-group">
-                        <label for="name">Ваше имя <span>*</span></label>
-                        <input id="name" class="form-control" name="name" required="" type="text"
-                            placeholder="Иванов Иван Иванович">
-                    </div>
+                        <input id="name" class="form-control" name="name" type="text">
+                        <input id="email" class="form-control" name="email" type="email">
                     <div class="form-group">
                         <label for="phone">Ваш номер <span>*</span></label>
-                        <input id="phone" class="form-control tel" name="phone" required="" type="phone"
+                        <input id="phone" class="form-control tel" name="phone" required="" type="text"
                             placeholder="+7 (###)###-####">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Укажите район вызова</label>
                         <textarea name="message" class="form-control" id="message"  rows="2"></textarea>
-                    </div>
-                    <div class="form-group__check">
+                    </div> -->
+                    <!-- <div class="form-group__check">
                         <input id="check" class="form__check" type="checkbox">
                         <span class="form__check-desk">Я добровольно отправляю свои данные</span>
-                    </div>
-                    <button class="form__button" type="submit" id="button" disabled>отправить заявку</button>
+                    </div> -->
+                    <button class="form__button" type="submit" id="button">отправить заявку</button>
                     <div class="result" id="loader" style="display:none">
                         <span class="loader">Отправка...</span>
                     </div>
@@ -168,7 +165,7 @@
         <div class="wrapper offer-header">
             <div class="offer-header__wrap">
                 <div class="logo">
-                    <img src="images/logo.png" alt="сантехник в спб" title="сантехник в спб">
+                    <img src="images/logo-2.svg" alt="сантехник в спб" title="сантехник в спб">
                 </div>
                 <div class="offer-text">
                     <div class="offer-text__title">
@@ -187,25 +184,22 @@
                     <div class="section-form__title">Вызов сантехника</div>
                     <div class="section-form__wrapper" id="formWrapper">
                         <form action="send.php" class="form" id="sectionForm" method="post">
-                            <div class="form-group">
-                                <label for="name">Ваше имя <span>*</span></label>
-                                <input id="name" class="form-control" name="name" required="" type="text"
-                                    placeholder="Иванов Иван Иванович">
-                            </div>
+                                <input id="name" name="name" type="text">
+                                <input id="email" name="email" type="email">
                             <div class="form-group">
                                 <label for="phone">Ваш номер <span>*</span></label>
-                                <input id="phone" class="form-control tel" name="phone" required="" type="phone"
+                                <input id="phone" class="form-control tel" name="phone" required="" type="text"
                                     placeholder="+7 (###)###-####">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Укажите район вызова</label>
                                 <textarea name="message" class="form-control" id="message" rows="2"></textarea>
-                            </div>
-                            <div class="form-group__check">
+                            </div> -->
+                            <!-- <div class="form-group__check">
                                 <input id="sectionCheck" class="form__check" type="checkbox">
                                 <span class="form__check-desk">Я добровольно отправляю свои данные</span>
-                            </div>
-                            <button class="form__button" type="submit" id="sectionButton" disabled>отправить заявку</button>
+                            </div> -->
+                            <button class="form__button" type="submit" id="sectionButton" >отправить заявку</button>
                             <div class="section-result" id="sectionLoader" style="display:none">
                                 <span class="loader">Отправка...</span> 
                             </div>
